@@ -1,1 +1,24 @@
-a
+/* Estilos para la cuadrícula de películas */
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Repite 5 columnas con ancho igual */
+    grid-gap: 20px; /* Espacio entre las películas */
+    justify-content: space-between; /* Sitúa las películas equidistantes */
+  }
+  
+/* Estilos para las imágenes */
+    .movie-grid a img {
+    max-width: 100%; /* Ajusta el tamaño máximo de las imágenes */
+    height: auto;
+}
+
+/* Estilos para los títulos de las películas */
+.movie-grid a h2 {
+    margin-top: 10px; /* Añade un pequeño margen superior */
+    font-size: 1.2rem; /* Tamaño de fuente */
+    text-align: center; /* Centra el texto */
+}
+
+.video {
+    display: none;
+}

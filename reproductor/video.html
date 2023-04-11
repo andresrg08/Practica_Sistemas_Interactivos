@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Reproductor</title>
+</head>
+<body>
+  <video id="video_player" width="640" height="360" controls>
+    <source src="" type="video/mp4">
+  </video>
+  <script>
+    var video = document.getElementById('video_player');
+    var src = window.location.search.substring(1);
+    video.src = decodeURIComponent(src);
+  </script>
+</body>
+</html>
