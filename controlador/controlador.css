@@ -2,6 +2,7 @@ body {
     margin: 0;
     padding: 0;
 }
+
 #controller {
 position: relative;
 height: 300px;
@@ -9,18 +10,18 @@ width: 300px;
 margin: 0 auto;
 margin-top: 50px;
 }
+
 #controller:before {
 content: "";
 display: block;
 padding-top: 100%;
 }
 
-
 #triangle-up {
 margin-top: 65%;
 position: absolute;
-top: 0;
-left: 60%;
+bottom: 65%;
+left: 50%;
 transform: translateX(-50%);
 width: 0;
 height: 0;
@@ -28,11 +29,12 @@ border-style: solid;
 border-width: 0 100px 170px 100px;
 border-color: transparent transparent #333 transparent;
 }
+
 #triangle-down {
 margin-bottom: 65%;
 position: absolute;
-bottom: 0;
-left: 60%;
+top: 65%;
+left: 50%;
 transform: translateX(-50%);
 width: 0;
 height: 0;
@@ -43,7 +45,7 @@ border-color: #333 transparent transparent transparent;
 #triangle-left {
 position: absolute;
 top: 50%;
-left: 20%;
+left: 5%;
 transform: translateY(-50%);
 width: 0;
 height: 0;
@@ -54,7 +56,7 @@ border-color: transparent #333 transparent transparent;
 #triangle-right {
 position: absolute;
 top: 50%;
-left: 82%;
+right: 5%;
 transform: translateY(-50%);
 width: 0;
 height: 0;
@@ -64,13 +66,13 @@ border-color: transparent transparent transparent #333;
 }
 #microphone {
 position: absolute;
-top: 10%;
-left: 50%;
+top: 5%;
+left: 37%;
 
 }
 .volume-control {
     position: fixed;
-    bottom: 20%;
+    bottom: 5%;
     left: 10%;
     width: 80%;
     height: 80px;
@@ -99,8 +101,8 @@ left: 50%;
   .slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 50px;
-    height: 50px;
+    width: 75px;
+    height: 75px;
     border-radius: 50%;
     background: #0f100f;
     cursor: pointer;
@@ -112,5 +114,22 @@ left: 50%;
     border-radius: 50%;
     background: #4CAF50;
     cursor: pointer;
+  } 
+  
+  #esfera {
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 50%, #ff0000, #0000ff);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-style: preserve-3d;
+    transform: translate3d(-50%, -50%, 0);
   }
-
+  
+  #esfera:hover {
+    transform: translate3d(-50%, -50%, 0) rotateX(90deg) rotateY(45deg);
+  }
+  
