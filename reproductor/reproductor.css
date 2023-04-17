@@ -7,7 +7,7 @@
   }
   
 /* Estilos para las imágenes */
-    .movie-grid a img {
+.movie-grid a img {
     max-width: 100%; /* Ajusta el tamaño máximo de las imágenes */
     height: auto;
 }
