@@ -1,24 +1,86 @@
-/* Estilos para la cuadrícula de películas */
-.movie-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr); /* Repite 5 columnas con ancho igual */
-    grid-gap: 20px; /* Espacio entre las películas */
-    justify-content: space-between; /* Sitúa las películas equidistantes */
+/* Estilo general */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #131313;
   }
   
-/* Estilos para las imágenes */
-.movie-grid a img {
-    max-width: 100%; /* Ajusta el tamaño máximo de las imágenes */
+/* Estilo de la cuadrícula de películas */
+
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Definimos 5 columnas de igual tamaño */
+    grid-template-rows: repeat(2, 1fr); /* Definimos 2 filas de igual tamaño */
+    grid-gap: 20px; /* Espacio entre elementos */
+    padding: 20px;
+    max-width: 1200px; /* Ancho máximo de la cuadrícula */
+    margin: 0 auto; /* Centramos la cuadrícula horizontalmente */
+  }
+  
+  a {
+    margin-top: 5%;
+    text-decoration: none;
+    color: inherit;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  }
+  
+  h2 {
+    margin: 10px 0 0;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  #recomendado{
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  
+  /* Estilo de la cabecera */
+  
+/* Combinación con turquesa */
+#cabecera {
+    background-image: linear-gradient(to right, rgb(49, 129, 175) 35%, #ffffff);
+    padding: 20px;
+    color: #fff;
+  }
+  
+  #texto-titulo {
+    margin: 0;
+    font-size: 36px;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+  }
+  
+  /* Estilo de las películas */
+  
+  img {
+    display: block;
+    width: 100%;
     height: auto;
-}
-
-/* Estilos para los títulos de las películas */
-.movie-grid a h2 {
-    margin-top: 10px; /* Añade un pequeño margen superior */
-    font-size: 1.2rem; /* Tamaño de fuente */
-    text-align: center; /* Centra el texto */
-}
-
-.video {
-    display: none;
-}
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  
+  img:hover {
+    transform: scale(1.05);
+  }
+  
+  h2 {
+    color: #f3f3f3;
+  }
+  
+  /* Estilo de los enlaces */
+  
+  a:hover h2 {
+    color: rgb(49, 129, 175);
+  }

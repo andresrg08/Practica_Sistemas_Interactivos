@@ -1,0 +1,20 @@
+body {
+    background-color: #1c1c1c;
+    margin: 0;
+    padding: 0;
+}
+video {
+    display: block;
+    margin: 80px auto;
+    box-shadow: 0 0 5px rgba(143, 143, 143, 0.5);
+}
+video::-webkit-media-controls-current-time-display {
+    color: rgb(49, 129, 175);
+}
+video::-webkit-media-controls-time-remaining-display {
+    color: rgb(49, 129, 175);
+}
+
+
+
+  
