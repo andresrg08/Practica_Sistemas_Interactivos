@@ -1,19 +1,23 @@
 const express = require('express');
 const app = express();
-const server = require("http").Server(app);
-
-const io = require("socket.io")(server);
-
+const http = require('http').createServer(app);
+const io = require('socket.io')(http);
+const clients = [];
+// Indicar la carpeta de archivos estáticos (en este caso, la carpeta www)
 app.use(express.static('www'));
 
-io.on("connection", function(socket){
-  console.log("nuevo cliente");
+// Manejar la conexión de los clientes
+io.on('connection', (socket) => {
 
-  socket.on("message_evt", function(message){
-    console.log(socket.id, message);
-    socket.broadcast.emit("message_evt", message);
+  // Recibir el mensaje de pausa del controlador
+  socket.on('pausa', (data) => {
+    // Enviar el mensaje de pausa al video correspondiente
+    socket.broadcast.emit('pausa', data);
   });
-  
+
 });
 
-server.listen(3000, () => console.log('server started'));
+// Iniciar el servidor en el puerto 3000
+http.listen(3000, () => {
+  console.log('Servidor iniciado en http://localhost:3000');
+});
