@@ -3,7 +3,7 @@ var socket = io();
 
 socket.on("connect", function(){
   socket.emit("conexion establecida");
-  socket.on("pausa", pausar_video());
+  socket.on("pausa", pausar_video);
 });
 
 function pausar_video(){
