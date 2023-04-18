@@ -9,4 +9,5 @@ socket.on("connect", function(){
 function pausar_video(){
   var video = document.getElementById("video_player");
   video.pause();
+  console.log("Video pausado")
 }
