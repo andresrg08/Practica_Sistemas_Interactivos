@@ -1,18 +1,21 @@
 const express = require('express');
 const app = express();
-const http = require('http').createServer(app);
+const path = require('path');
+const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const clients = [];
-// Indicar la carpeta de archivos estáticos (en este caso, la carpeta www)
-app.use(express.static('www'));
+
+
+app.use('/', express.static(path.join(__dirname, 'www')));
+
 
 // Manejar la conexión de los clientes
 io.on('connection', (socket) => {
-
+  console.log(`Cliente ${socket.id} conectado`);
   // Recibir el mensaje de pausa del controlador
   socket.on('pausa', (data) => {
     // Enviar el mensaje de pausa al video correspondiente
-    socket.broadcast.emit('pausa', data);
+    io.emit('pausa', data);
   });
 
 });

@@ -1,11 +1,12 @@
-// Conectar al servidor de socket.io
+// Conectarse con Socket.io
 var socket = io();
 
-// Escuchar el evento "pausa" enviado desde el servidor
-socket.on('pausa', function() {
-  // Obtener el elemento de video
-  var video = document.getElementById('video_player');
-
-  // Pausar el video
-  video.pause();
+socket.on("connect", function(){
+  socket.emit("conexion establecida");
+  socket.on("pausa", pausar_video());
 });
+
+function pausar_video(){
+  var video = document.getElementById("video_player");
+  video.pause();
+}

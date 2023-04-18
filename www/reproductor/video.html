@@ -3,16 +3,17 @@
 <head>
   <title>Reproductor</title>
   <link rel="stylesheet" type="text/css" href="video.css">
+  <script type="text/javascript" src="socket.io/socket.io.js"></script>
+  <script type="text/javascript" src="reproductor.js"></script>
 </head>
 <body>
   <video id="video_player" width="640" height="360" controls autoplay>
     <source src="" type="video/mp4">
-  </video>
+  </video>  
   <script>
     var video = document.getElementById('video_player');
     var src = window.location.search.substring(1);
     video.src = decodeURIComponent(src);
   </script>
-  <script src="reproductor.js"></script>
 </body>
 </html>
