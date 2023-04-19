@@ -3,73 +3,12 @@ body {
     padding: 0;
 }
 
-#controller {
-position: relative;
-height: 300px;
-width: 300px;
-margin: 0 auto;
-margin-top: 50px;
-}
-
-#controller:before {
-content: "";
-display: block;
-padding-top: 100%;
-}
-
-#triangle-up {
-margin-top: 65%;
-position: absolute;
-bottom: 65%;
-left: 50%;
-transform: translateX(-50%);
-width: 0;
-height: 0;
-border-style: solid;
-border-width: 0 100px 170px 100px;
-border-color: transparent transparent #333 transparent;
-}
-
-#triangle-down {
-margin-bottom: 65%;
-position: absolute;
-top: 65%;
-left: 50%;
-transform: translateX(-50%);
-width: 0;
-height: 0;
-border-style: solid;
-border-width: 170px 100px 0 100px;
-border-color: #333 transparent transparent transparent;
-}
-#triangle-left {
-position: absolute;
-top: 50%;
-left: 5%;
-transform: translateY(-50%);
-width: 0;
-height: 0;
-border-style: solid;
-border-width: 100px 170px 100px 0;
-border-color: transparent #333 transparent transparent;
-}
-#triangle-right {
-position: absolute;
-top: 50%;
-right: 5%;
-transform: translateY(-50%);
-width: 0;
-height: 0;
-border-style: solid;
-border-width: 100px 0 100px 170px;
-border-color: transparent transparent transparent #333;
-}
 #microphone {
 position: absolute;
 top: 5%;
 left: 37%;
-
 }
+
 .volume-control {
     position: fixed;
     bottom: 5%;
@@ -119,12 +58,18 @@ left: 37%;
   #esfera {
     width: 400px;
     height: 400px;
+    background-image: radial-gradient(circle at 50% 50%, #85c7e6, rgb(49, 129, 175));
     border-radius: 50%;
-    background: radial-gradient(circle at 50% 50%, #ff0000, #0000ff);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     position: absolute;
     top: 50%;
     left: 50%;
-    transform-style: preserve-3d;
-    transform: translate3d(-50%, -50%, 0);
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+  }
+  
+  @media only screen and (max-width: 600px) {
+    #esfera {
+      top: 80%;
+      left: 80%;
+    }
   }
