@@ -7,6 +7,7 @@ socket.on("connect", function(){
   var initialX, initialY;
   var currentX = -200, currentY = -200;
 
+
   // Eventos táctiles para dispositivos móviles
   joystick.addEventListener('touchstart', function(event) {
     initialX = event.touches[0].clientX - currentX;
@@ -17,16 +18,17 @@ socket.on("connect", function(){
     event.preventDefault();
     currentX = event.touches[0].clientX - initialX;
     currentY = event.touches[0].clientY - initialY;
-    console.log(currentX)
-   
     joystick.style.transform = "translate(" + currentX + "px, " + currentY + "px)";
   });
 
   joystick.addEventListener('touchend', function() {
+    if (currentX > 229 && currentY > -380 && currentY < 230){
+      socket.emit('derecha', true);
+    }
     console.log("Mover esfera");
     socket.emit('mover_esfera', {x: currentX, y: currentY});
-    currentX = -200;
-    currentY = -200;
+    currentX = -150;
+    currentY = -150;
     joystick.style.transform = "translate(" + currentX + "px, " + currentY + "px)";
   });
 
@@ -35,6 +37,5 @@ socket.on("connect", function(){
     console.log("Tocar esfera");
     socket.emit('pausa', true);
   });
-
-  
+ 
 });

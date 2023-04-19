@@ -61,17 +61,20 @@ body {
     transition: transform 0.3s ease-in-out;
   }
   
-  
-  img:hover {
-    transform: scale(1.05);
-  }
-  
   h2 {
     color: #f3f3f3;
   }
+
+  .movie-grid a.selected {
+    transform: scale(1.05);
+  }
   
-  /* Estilo de los enlaces */
+  .movie-grid a.selected img {
+    border: 3px solid rgb(49, 129, 175);
+  }
   
-  a:hover h2 {
+  .movie-grid a.selected h2 {
     color: rgb(49, 129, 175);
   }
+  
+  
