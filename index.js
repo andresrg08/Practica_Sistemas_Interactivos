@@ -23,6 +23,21 @@ io.on('connection', (socket) => {
     io.emit('derecha', data);
   });
 
+  socket.on('izquierda', (data) => {
+    // Enviar el mensaje para navegar a la izquierda
+    io.emit('izquierda', data);
+  });
+
+  socket.on('arriba', (data) => {
+    // Enviar el mensaje para navegar a la izquierda
+    io.emit('arriba', data);
+  });
+
+  socket.on('abajo', (data) => {
+    // Enviar el mensaje para navegar a la izquierda
+    io.emit('abajo', data);
+  });
+
 });
 
 // Iniciar el servidor en el puerto 3000

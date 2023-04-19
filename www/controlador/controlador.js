@@ -23,10 +23,27 @@ socket.on("connect", function(){
 
   joystick.addEventListener('touchend', function() {
     if (currentX > 229 && currentY > -380 && currentY < 230){
+      console.log("derecha");
       socket.emit('derecha', true);
     }
+
+    if (currentX < -385 && currentY > -380 && currentY < 230){
+      console.log("izquierda");
+      socket.emit('izquierda', true);
+    }
+
+    if (currentY < -380 && currentX < 229 && currentX > -385){
+      console.log("arriba");
+      socket.emit('arriba', true);
+    }
+
+    if (currentY > 230 && currentX < 229 && currentX > -385){
+      console.log("abajo");
+      socket.emit('abajo', true);
+    }
+
+
     console.log("Mover esfera");
-    socket.emit('mover_esfera', {x: currentX, y: currentY});
     currentX = -150;
     currentY = -150;
     joystick.style.transform = "translate(" + currentX + "px, " + currentY + "px)";
