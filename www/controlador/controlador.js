@@ -4,7 +4,7 @@ socket.on("connect", function(){
   socket.emit("conexion establecida");
 
   var joystick = document.getElementById('esfera');
-  var micro = document.getElementById('boton_micro');
+  var micro = document.getElementById('micro');
   var initialX, initialY;
   var currentX = -200, currentY = -200;
   
@@ -63,11 +63,68 @@ socket.on("connect", function(){
     socket.emit('tocar_pelicula', true);
   });
 
-  micro.addEventListener('click', function() {
-    console.log("Tocar micro");
-    socket.emit('tocar_micro', true);
-  });
-  
+  /*-----------API Speech---------------*/
 
+  //Con esto permitimos utilizar la api speech
+  var SpeechRecognition =
+  window.SpeechRecognition || webkitSpeechRecognition;
+  var SpeechGrammarList =
+  window.SpeechGrammarList || webkitSpeechGrammarList;
+
+  const recognition = new SpeechRecognition();
+  const speechRecognitionList = new SpeechGrammarList();
+
+  const pelis = { "apocalypse now": 0, 
+                  "breaking bad": 1,
+                  "gladiator": 2,
+                  "good will hunting": 3,
+                  "outer banks": 4,
+                  "scarface": 5,
+                  "the dark knight": 6,
+                  "the wolf of wall street": 7,
+                  "house of cards": 8,
+                  "whiplash": 9,
+                  "go back": 10};
+  const grammar =
+  "#JSGF V1.0; grammar pelis; public <pelis> = " +
+  Object.keys(pelis).join(" | ") +
+  " ;";
+
+  speechRecognitionList.addFromString(grammar, 1);
+  recognition.grammars = speechRecognitionList;
+  recognition.continuous = false;
+  recognition.lang = "en-US";
+  recognition.interimResults = false;
+  recognition.maxAlternatives = 5;
+
+  micro.addEventListener('click', function() {
+    console.log("Pulsar micro");
+    recognition.start();
+    //btnSpeech.disabled = true;
+    console.log("Listo para recibir un comando de película.");
+
+    recognition.onresult = function(event) {
+      const result = event.results[0][0].transcript.toLowerCase();
+      console.log(`Resultado: ${result}.`);
+    
+      if (pelis[result] != null) {
+        const peliNum = pelis[result];
+        console.log(`Película reconocida: ${result}, número ${peliNum}`);
+        if (peliNum < 10){
+          socket.emit('peli', peliNum);
+        }
+        else{
+          socket.emit('menu_principal', true);
+        }
+      }
+
+    };
+
+    recognition.onspeechend = function() {
+      console.log("speechend");
+      recognition.stop();
+    };
+
+  });
 
 });

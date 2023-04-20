@@ -55,11 +55,15 @@ io.on('connection', (socket) => {
     io.emit('retroceder', data);
   });
 
-  socket.on('tocar_micro', (data) => {
+  socket.on('peli', (data) => {
     // Enviar el mensaje para navegar a la izquierda
-    io.emit('tocar_micro', data);
+    io.emit('peli', data);
   });
 
+  socket.on('menu_principal', (data) => {
+    // Enviar el mensaje para navegar a la izquierda
+    io.emit('menu_principal', data);
+  });
 
 });
 

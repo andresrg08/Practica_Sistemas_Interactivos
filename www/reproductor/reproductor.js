@@ -3,7 +3,7 @@ var socket = io();
 const movies = document.querySelectorAll('.movie-grid a');
 let selectedMovieIndex = 0;
 console.log(movies);
-var videoPausado= true;
+var videoPausado = false;
 
 
 socket.on("connect", function(){
@@ -16,23 +16,14 @@ socket.on("connect", function(){
   socket.on("tocar_pelicula", tocarPelicula);
   socket.on("avanzar", avanzar);
   socket.on("retroceder", retroceder);
-  socket.on("tocar_micro", tocarMicro);
-  
-
+  socket.on('peli', function(peliNum){
+    console.log('El servidor envió el número de película:', peliNum);
+    selectMovie(peliNum);
+    tocarPelicula();
+  });
+  socket.on('menu_principal', menuPrincipal)
 });
 
-/*function pausarVideo(){
-  var video = document.getElementById("video_player");
-  video.pause();
-  console.log("Video pausado");
-}
-
-function playVideo(){
-  var video = document.getElementById("video_player");
-  video.play();
-  console.log("Video en play");
-}
-*/
 function controlarVideo(){
   var video = document.getElementById("video_player");
   
@@ -79,7 +70,6 @@ function moverAbajo(){
 }
 
 function tocarPelicula(){
-  
   var pelicula_seleccionada = movies[selectedMovieIndex];
   if (pelicula_seleccionada != null){
     window.location.href=pelicula_seleccionada.href;
@@ -99,70 +89,6 @@ function retroceder(){
   video.currentTime -= salto;
 }
 
-// A PARTIR DE AQUI EMPIEZA LA API DE VOZ
-var SpeechRecognition =
-  window.SpeechRecognition || webkitSpeechRecognition;
-var SpeechGrammarList =
-  window.SpeechGrammarList || webkitSpeechGrammarList;
-
-const recognition = new SpeechRecognition();
-const speechRecognitionList = new SpeechGrammarList();
-
-const colors = { rojo: "#ff0000", verde: "#00ff00", amarillo: "#ffff00", azul: "#005999", negro: "#000000" };
-const grammar =
-  "#JSGF V1.0; grammar colors; public <color> = " +
-  Object.keys(colors).join(" | ") +
-  " ;";
-
-speechRecognitionList.addFromString(grammar, 1);
-recognition.grammars = speechRecognitionList;
-recognition.continuous = false;
-recognition.lang = "es-ES";
-recognition.interimResults = false;
-recognition.maxAlternatives = 1;
-
-const btnSpeech = document.querySelector("#boton_micro");
-btnSpeech.addEventListener("click", function(e) {
-  recognition.start();
-  btnSpeech.disabled = true;
-  console.log("Listo para recibir un comando de color.");
-});
-
-recognition.onresult = function(event) {
-  console.log("result");
-  console.log(event);
-  const result = event.results[0][0].transcript;
-  console.log(`Resultado: ${result}.`);
-  console.log(`Confianza: ${event.results[0][0].confidence}`);
-
-  if (colors[result]) {
-    document.body.style.backgroundColor = colors[result];
-  }
-};
-
-recognition.onspeechend = function() {
-  console.log("speechend");
-  recognition.stop();
-  //btnSpeech.disabled = false;
-
-};
-
-/* Para habilitar reconocimiento continuo */
-
-recognition.onend = function() {
-  console.log("end");
-  recognition.start();
+function menuPrincipal(){
+  window.location.href = "./index.html";
 }
-
-recognition.onnomatch = function(event) {
-  document.body.style.backgroundColor = "#000000";
-  console.log("No he reconocido el color");
-  recognition.stop();
-  btnSpeech.disabled = false;
-};
-
-recognition.onerror = function(event) {
-  console.log(`Error occurred in recognition: ${event.error}`);
-};
-
-
