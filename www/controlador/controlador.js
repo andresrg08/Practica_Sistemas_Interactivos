@@ -6,7 +6,7 @@ socket.on("connect", function(){
   var joystick = document.getElementById('esfera');
   var initialX, initialY;
   var currentX = -200, currentY = -200;
-
+  
 
   // Eventos táctiles para dispositivos móviles
   joystick.addEventListener('touchstart', function(event) {
@@ -52,7 +52,14 @@ socket.on("connect", function(){
   // Evento de clic para navegadores de escritorio
   joystick.addEventListener('click', function() {
     console.log("Tocar esfera");
-    socket.emit('pausa', true);
+    socket.emit('controlar_video', true);
+  });
+
+  joystick.addEventListener('click', function() {
+    console.log("Tocar pelicula");
+    socket.emit('tocar_pelicula', true);
   });
  
+
+
 });

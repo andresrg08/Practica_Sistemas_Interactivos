@@ -12,10 +12,12 @@ app.use('/', express.static(path.join(__dirname, 'www')));
 // Manejar la conexión de los clientes
 io.on('connection', (socket) => {
   console.log(`Cliente ${socket.id} conectado`);
-  // Recibir el mensaje de pausa del controlador
-  socket.on('pausa', (data) => {
+  
+  // Recibir el mensaje de reproducir del controlador
+  
+  socket.on('controlar_video', (data) => {
     // Enviar el mensaje de pausa al video correspondiente
-    io.emit('pausa', data);
+    io.emit('controlar_video', data);
   });
 
   socket.on('derecha', (data) => {
@@ -37,6 +39,12 @@ io.on('connection', (socket) => {
     // Enviar el mensaje para navegar a la izquierda
     io.emit('abajo', data);
   });
+
+  socket.on('tocar_pelicula', (data) => {
+    // Enviar el mensaje para navegar a la izquierda
+    io.emit('tocar_pelicula', data);
+  });
+
 
 });
 
