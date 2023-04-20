@@ -4,6 +4,7 @@ socket.on("connect", function(){
   socket.emit("conexion establecida");
 
   var joystick = document.getElementById('esfera');
+  var micro = document.getElementById('boton_micro');
   var initialX, initialY;
   var currentX = -200, currentY = -200;
   
@@ -61,7 +62,12 @@ socket.on("connect", function(){
     console.log("Tocar pelicula");
     socket.emit('tocar_pelicula', true);
   });
- 
+
+  micro.addEventListener('click', function() {
+    console.log("Tocar micro");
+    socket.emit('tocar_micro', true);
+  });
   
+
 
 });

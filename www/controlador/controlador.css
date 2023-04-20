@@ -4,9 +4,14 @@ body {
 }
 
 #microphone {
+
 position: absolute;
 top: 5%;
-left: 37%;
+left: 39%;
+}
+
+#boton_micro{
+  background-color: rgb(192, 223, 233);
 }
 
 .volume-control {

@@ -55,6 +55,11 @@ io.on('connection', (socket) => {
     io.emit('retroceder', data);
   });
 
+  socket.on('tocar_micro', (data) => {
+    // Enviar el mensaje para navegar a la izquierda
+    io.emit('tocar_micro', data);
+  });
+
 
 });
 
