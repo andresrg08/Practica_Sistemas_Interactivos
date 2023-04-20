@@ -45,6 +45,16 @@ io.on('connection', (socket) => {
     io.emit('tocar_pelicula', data);
   });
 
+  socket.on('avanzar', (data) => {
+    // Enviar el mensaje para navegar a la izquierda
+    io.emit('avanzar', data);
+  });
+
+  socket.on('retroceder', (data) => {
+    // Enviar el mensaje para navegar a la izquierda
+    io.emit('retroceder', data);
+  });
+
 
 });
 

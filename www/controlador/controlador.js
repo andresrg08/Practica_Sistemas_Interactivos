@@ -25,11 +25,13 @@ socket.on("connect", function(){
     if (currentX > 229 && currentY > -380 && currentY < 230){
       console.log("derecha");
       socket.emit('derecha', true);
+      socket.emit('avanzar', true);
     }
 
     if (currentX < -385 && currentY > -380 && currentY < 230){
       console.log("izquierda");
       socket.emit('izquierda', true);
+      socket.emit('retroceder', true);
     }
 
     if (currentY < -380 && currentX < 229 && currentX > -385){
@@ -60,6 +62,6 @@ socket.on("connect", function(){
     socket.emit('tocar_pelicula', true);
   });
  
-
+  
 
 });

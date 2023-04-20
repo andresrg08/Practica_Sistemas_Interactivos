@@ -7,15 +7,17 @@
   <script type="text/javascript" src="reproductor.js"></script>
 </head>
 <body>
-  <video id="video_player" width="640" height="360" controls >
+  <video id="video_player" width="640" height="360" controls autoplay >
     <source src="" type="video/mp4">
   </video>  
   <script>
+    
     var video = document.getElementById('video_player');  
     var src = window.location.search.substring(1);
     video.src = decodeURIComponent(src);
    
     
+    video.play();
     
   </script>
 </body>

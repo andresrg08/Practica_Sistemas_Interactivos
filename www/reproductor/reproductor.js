@@ -9,12 +9,14 @@ var videoPausado= true;
 socket.on("connect", function(){
   socket.emit("conexion establecida");
   socket.on("controlar_video", controlarVideo);
-  
   socket.on("derecha", moverDerecha);
   socket.on("izquierda", moverIzquierda);
   socket.on("arriba", moverArriba);
   socket.on("abajo", moverAbajo);
   socket.on("tocar_pelicula", tocarPelicula);
+  socket.on("avanzar", avanzar);
+  socket.on("retroceder", retroceder);
+
 });
 
 /*function pausarVideo(){
@@ -81,6 +83,18 @@ function tocarPelicula(){
     window.location.href=pelicula_seleccionada.href;
     console.log("Seleccionando pelicula");
   }
+}
+
+function avanzar(){
+  var video = document.getElementById("video_player");
+  var salto = 10; // Saltos de 10 segundos
+  video.currentTime += salto;
+}
+
+function retroceder(){
+  var video = document.getElementById("video_player");
+  var salto = 10; // Saltos de 10 segundos
+  video.currentTime -= salto;
 }
 
 
