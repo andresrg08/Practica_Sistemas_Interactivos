@@ -128,9 +128,24 @@ socket.on("connect", function(){
   });
 
 });
-
+var micro_encendido=false;
 let initialAngle = null;//C
 var volumen_control = 0.1;
+var volumen= document.getElementById('activacion_volumen');
+volumen.addEventListener('click',function(){
+  if (micro_encendido==true){
+    console.log('apagando micro');
+    micro_encendido=false;
+    volumen.style.backgroundColor="white";
+  }
+  if (micro_encendido==false){
+    console.log('encendiendo micro');
+    micro_encendido=true;
+    volumen.style.backgroundColor='red';
+  }
+});
+
+if (micro_encendido ==true){
   window.addEventListener('deviceorientation', function(event) {
     if (!initialAngle) {
       initialAngle = event.gamma;
@@ -142,10 +157,9 @@ var volumen_control = 0.1;
       // Giro hacia la derecha, subir volumen
 	
       socket.emit("subir_volumen", volumen_control);
-    } else if (angle < 0) {
+    }else if (angle < 0) {
       // Giro hacia la izquierda, bajar volumen
       socket.emit("bajar_volumen", volumen_control);
     }
   });
-
-
+}

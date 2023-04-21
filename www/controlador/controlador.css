@@ -6,82 +6,47 @@ body {
 #micro {
 
 position: absolute;
-top: 5%;
+top: 10%;
 left: 39%;
 }
 
-.volume-control {
-    position: fixed;
-    bottom: 5%;
-    left: 10%;
-    width: 80%;
-    height: 80px;
-    background-color: #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+#activacion_volumen img{
   
-  .slider {
-    -webkit-appearance: none;
-    width: 80%;
-    height: 40%;
-    border-radius: 5px;
-    background: #ddd;
-    outline: none;
-    opacity: 0.7;
-    -webkit-transition: .2s;
-    transition: opacity .2s;
-  }
-  
-  .slider:hover {
-    opacity: 1;
-  }
-  
-  .slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 75px;
-    height: 75px;
-    border-radius: 50%;
-    background: #0f100f;
-    cursor: pointer;
-  }
-  
-  .slider::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: #4CAF50;
-    cursor: pointer;
-  } 
-  
-  #esfera {
-    width: 300px;
-    height: 300px;
-    background-image: radial-gradient(circle at 50% 50%, #b4d6e6, rgb(49, 129, 175));
-    border-radius: 50%;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    cursor: pointer;
-  }
+    top: 75%;
+    left: 40%;
+    width: 20%;
+    height: 10%;
+    
 
-  #cuadrado {
-    position: fixed;
-    z-index: -1;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 450px;
-    height: 450px;
-    border: 2px solid black;
-  }
+}
   
-  @media only screen and (max-width: 600px) {
-    #esfera {
-      top: 80%;
-      left: 80%;
-    }
+#esfera {
+  width: 300px;
+  height: 300px;
+  background-image: radial-gradient(circle at 50% 50%, #b4d6e6, rgb(49, 129, 175));
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+#cuadrado {
+  position: fixed;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 450px;
+  height: 450px;
+  border: 2px solid black;
+}
+
+@media only screen and (max-width: 600px) {
+  #esfera {
+    top: 80%;
+    left: 80%;
   }
+}
