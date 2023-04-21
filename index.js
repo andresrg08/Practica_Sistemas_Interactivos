@@ -65,6 +65,15 @@ io.on('connection', (socket) => {
     io.emit('menu_principal', data);
   });
 
+  socket.on('subir_volumen', (data) => {
+    // Enviar el mensaje para navegar a la izquierda
+    io.emit('subir_volumen', data);
+  });
+
+  socket.on('bajar_volumen', (data) => {
+    // Enviar el mensaje para navegar a la izquierda
+    io.emit('bajar_volumen', data);
+  });
 });
 
 // Iniciar el servidor en el puerto 3000

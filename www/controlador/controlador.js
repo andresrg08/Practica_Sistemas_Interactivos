@@ -128,3 +128,24 @@ socket.on("connect", function(){
   });
 
 });
+
+let initialAngle = null;//C
+var volumen_control = 0.1;
+  window.addEventListener('deviceorientation', function(event) {
+    if (!initialAngle) {
+      initialAngle = event.gamma;
+    }
+
+    const angle = event.gamma - initialAngle;
+
+    if (angle > 0) {
+      // Giro hacia la derecha, subir volumen
+	
+      socket.emit("subir_volumen", volumen_control);
+    } else if (angle < 0) {
+      // Giro hacia la izquierda, bajar volumen
+      socket.emit("bajar_volumen", volumen_control);
+    }
+  });
+
+
