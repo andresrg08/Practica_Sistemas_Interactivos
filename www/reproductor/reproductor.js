@@ -21,22 +21,28 @@ socket.on("connect", function(){
     selectMovie(peliNum);
     tocarPelicula();
   });
+
   socket.on('menu_principal', menuPrincipal);
   
-  socket.on("subir_volumen", function(volume){
-    console.log('Subiendo volumen a:', volume);
-    const video = document.getElementById('video_player');
-    if (video.volume>=0 && video.volume<1){
-      video.volume+=volume
+socket.on("subir_volumen", function(volume){
+  console.log('Subiendo volumen a:', volume);
+  const video = document.getElementById('video_player');
+  if (video.volume >= 0 && video.volume < 1) {
+    video.volume += volume;
+    if (video.volume > 1) {
+      video.volume = 1;
     }
-    
-  });
+  }
+});
 
   socket.on("bajar_volumen", function(volume){
     console.log('Bajando volumen a:', volume);
     const video = document.getElementById('video_player');
-    if (video.volume>0 && video.volume<=1){
-      video.volume-=volume
+    if (video.volume > 0 && video.volume<=1){
+      video.volume -= volume
+      if (video.volume < 0) {
+        video.volume = 0;
+      }
     }
   });
 });

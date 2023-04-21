@@ -128,38 +128,61 @@ socket.on("connect", function(){
   });
 
 });
-var micro_encendido=false;
-let initialAngle = null;//C
-var volumen_control = 0.1;
-var volumen= document.getElementById('activacion_volumen');
-volumen.addEventListener('click',function(){
-  if (micro_encendido==true){
-    console.log('apagando micro');
-    micro_encendido=false;
-    volumen.style.backgroundColor="white";
-  }
-  if (micro_encendido==false){
-    console.log('encendiendo micro');
-    micro_encendido=true;
-    volumen.style.backgroundColor='red';
+
+/*-----------------------------------------------------*/
+
+
+var micro_encendido = false;
+var volumen_control = 0.01;
+var volumen = document.getElementById('activacion_volumen');
+var initialGamma = null; // posición inicial en el eje gamma
+var timerId = null; // id del temporizador
+
+volumen.addEventListener('touchstart', function() {
+  micro_encendido = true;
+});
+
+volumen.addEventListener('touchend', function() {
+  micro_encendido = false;
+  clearInterval(timerId);
+});
+
+window.addEventListener('deviceorientation', function(event) {
+  if (micro_encendido) {
+    const angle = event.gamma;
+    if (angle > 30) {
+      // Giro hacia la derecha, subir volumen
+      console.log("subir");
+      socket.emit("subir_volumen", volumen_control);
+    }
+    if (angle < -30) {
+      // Giro hacia la derecha, subir volumen
+      console.log("bajar");
+      socket.emit("bajar_volumen", volumen_control);
+    }
+
   }
 });
 
-if (micro_encendido ==true){
-  window.addEventListener('deviceorientation', function(event) {
-    if (!initialAngle) {
-      initialAngle = event.gamma;
+ /* initialGamma = null; // resetear la posición inicial en cada toque
+  let event = null;
+  timerId = setInterval(function() {
+    if (micro_encendido && initialGamma !== null) {
+      const angle = event.gamma - initialGamma;
+      if (angle > 30) {
+        // Giro hacia la derecha, subir volumen
+        console.log("subir");
+        socket.emit("subir_volumen", volumen_control);
+      }
     }
+  }, 100); // comprobar la posición cada 100 ms
 
-    const angle = event.gamma - initialAngle;
 
-    if (angle > 0) {
-      // Giro hacia la derecha, subir volumen
-	
-      socket.emit("subir_volumen", volumen_control);
-    }else if (angle < 0) {
-      // Giro hacia la izquierda, bajar volumen
-      socket.emit("bajar_volumen", volumen_control);
-    }
-  });
-}
+  
+  
+});
+
+volumen.addEventListener('touchend', function() {
+  micro_encendido = false;
+  clearInterval(timerId);
+})*/
