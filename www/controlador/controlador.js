@@ -84,7 +84,8 @@ socket.on("connect", function(){
                   "the wolf of wall street": 7,
                   "house of cards": 8,
                   "whiplash": 9,
-                  "go back": 10};
+                  "go back": 10,
+                  "random": 11};
   const grammar =
   "#JSGF V1.0; grammar pelis; public <pelis> = " +
   Object.keys(pelis).join(" | ") +
@@ -98,6 +99,8 @@ socket.on("connect", function(){
   recognition.maxAlternatives = 5;
 
   micro.addEventListener('click', function() {
+    micro.style.backgroundColor = "#ff6060";
+    micro.style.borderColor= "red";
     console.log("Pulsar micro");
     recognition.start();
     //btnSpeech.disabled = true;
@@ -113,14 +116,20 @@ socket.on("connect", function(){
         if (peliNum < 10){
           socket.emit('peli', peliNum);
         }
-        else{
+        else if(peliNum == 10){
           socket.emit('menu_principal', true);
+        }
+        else{
+          let peliRandom = Math.floor(Math.random() * (10 - 1 + 1)) + 1;
+          socket.emit('peli', peliRandom);
         }
       }
 
     };
 
     recognition.onspeechend = function() {
+      micro.style.backgroundColor = "#b4d6e6";
+      micro.style.borderColor= "rgb(49, 129, 175)";
       console.log("speechend");
       recognition.stop();
     };
@@ -131,24 +140,26 @@ socket.on("connect", function(){
 
 /*-----------------------------------------------------*/
 
-
-var micro_encendido = false;
+var vol_encendido = false;
 var volumen_control = 0.01;
 var volumen = document.getElementById('activacion_volumen');
-var initialGamma = null; // posición inicial en el eje gamma
-var timerId = null; // id del temporizador
 
 volumen.addEventListener('touchstart', function() {
-  micro_encendido = true;
+  console.log("Preparado para controlar volumen");
+  volumen.style.backgroundColor = "#ff6060";
+  volumen.style.borderColor= "red";
+  vol_encendido = true;
 });
 
 volumen.addEventListener('touchend', function() {
-  micro_encendido = false;
-  clearInterval(timerId);
+  volumen.style.backgroundColor = "#b4d6e6";
+  volumen.style.borderColor= "rgb(49, 129, 175)";
+  console.log("Parando control de volumen")
+  vol_encendido = false;
 });
 
 window.addEventListener('deviceorientation', function(event) {
-  if (micro_encendido) {
+  if (vol_encendido) {
     const angle = event.gamma;
     if (angle > 30) {
       // Giro hacia la derecha, subir volumen
@@ -163,26 +174,3 @@ window.addEventListener('deviceorientation', function(event) {
 
   }
 });
-
- /* initialGamma = null; // resetear la posición inicial en cada toque
-  let event = null;
-  timerId = setInterval(function() {
-    if (micro_encendido && initialGamma !== null) {
-      const angle = event.gamma - initialGamma;
-      if (angle > 30) {
-        // Giro hacia la derecha, subir volumen
-        console.log("subir");
-        socket.emit("subir_volumen", volumen_control);
-      }
-    }
-  }, 100); // comprobar la posición cada 100 ms
-
-
-  
-  
-});
-
-volumen.addEventListener('touchend', function() {
-  micro_encendido = false;
-  clearInterval(timerId);
-})*/

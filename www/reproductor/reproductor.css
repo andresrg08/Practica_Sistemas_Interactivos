@@ -3,7 +3,85 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #131313;
+    background: #508fb9;
+  }  
+  
+/*----------------- FONDO--------------------*/
+
+  .circle{
+    position: absolute;
+    border-radius: 50%;
+    background: white;
+    animation: ripple 15s infinite;
+    box-shadow: 0px 0px 1px 0px #508fb9;
+  }
+  
+  .small{
+    width: 200px;
+    height: 200px;
+    left: -100px;
+    bottom: -100px;
+  }
+  
+  .medium{
+    width: 400px;
+    height: 400px;
+    left: -200px;
+    bottom: -200px;
+  }
+  
+  .large{
+    width: 600px;
+    height: 600px;
+    left: -300px;
+    bottom: -300px;
+  }
+  
+  .xlarge{
+    width: 800px;
+    height: 800px;
+    left: -400px;
+    bottom: -400px;
+  }
+  
+  .xxlarge{
+    width: 1000px;
+    height: 1000px;
+    left: -500px;
+    bottom: -500px;
+  }
+  
+  .shade1{
+    opacity: 0.2;
+  }
+  .shade2{
+    opacity: 0.5;
+  }
+  
+  .shade3{
+    opacity: 0.7;
+  }
+  
+  .shade4{
+    opacity: 0.8;
+  }
+  
+  .shade5{
+    opacity: 0.9;
+  }
+  
+  @keyframes ripple{
+    0%{
+      transform: scale(0.8);
+    }
+    
+    50%{
+      transform: scale(1.2);
+    }
+    
+    100%{
+      transform: scale(0.8);
+    }
   }
   
 /* Estilo de la cuadrícula de películas */
@@ -36,7 +114,7 @@ body {
   
 /* Combinación con turquesa */
 #cabecera {
-    background-image: linear-gradient(to right, rgb(49, 129, 175) 35%, #ffffff);
+    background-color: rgb(32, 32, 32);
     padding: 20px;
     color: #fff;
   }
@@ -47,7 +125,7 @@ body {
     text-align: center;
     font-weight: bold;
     font-family: 'Montserrat', sans-serif;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+    text-shadow: 2px 2px 4px rgba(134, 134, 134, 0.4);
   }
   
   /* Estilo de las películas */
@@ -62,7 +140,7 @@ body {
   }
   
   h2 {
-    color: #f3f3f3;
+    color: rgb(32, 32, 32);
   }
 
   .movie-grid a.selected {
@@ -70,11 +148,11 @@ body {
   }
   
   .movie-grid a.selected img {
-    border: 3px solid rgb(49, 129, 175);
+    border: 3px solid rgb(255, 255, 255);
   }
   
   .movie-grid a.selected h2 {
-    color: rgb(49, 129, 175);
+    color: rgb(255, 255, 255);
   }
   
   
