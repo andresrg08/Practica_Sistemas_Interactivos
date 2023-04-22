@@ -7,18 +7,43 @@
       
   </head>
 <body>
-  <div class="lines">
-    <div class="line"></div>
-    <div class="line"></div>
-    <div class="line"></div>
-  </div>
+
+  <script>
+    // Array de imágenes
+    var images = [
+      "images/american.jpg",
+      "images/batman.jpg",
+      "images/blade.jpg",
+      "images/buenofeomalo.jpg",
+      "images/cadena.jpeg",
+      "images/padrino.jpg",
+      "images/saul.jpg",
+      "images/scream.jpg",
+      "images/star.jpg",
+      "images/x.jpg"
+    ];
+
+    var numAleatorio = Math.floor(Math.random() * images.length);
+
+    document.body.style.backgroundImage = "url('" + images[numAleatorio] + "')";
+  </script>
+
 	<div id="remote">
-      <div id="micro"> 
-        <img src="images/microphone.png" alt="">
+    <div class="imagenes">
+      <div id="div_logo">
+        <img src="images/logo.png" alt="" id="img_logo">
       </div>
-      <div id="esfera"></div>
-      <div id="activacion_volumen"><h1 id="vol">VOLUMEN</h1></div>
+      <img src="images/help.png" alt="" id="img_help">
     </div>
+    <div id="micro"> 
+      <img src="images/microphone.png" alt="">
+    </div>
+    <div id="esfera"></div>
+    <div id="volumen_boton">
+      <h1 id="vol">VOLUMEN</h1>
+      <div id="activacion_volumen"></div>
+    </div> 
+  </div>
 
 </body>
 <script type="text/javascript" src="controlador.js"></script>

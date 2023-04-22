@@ -16,13 +16,23 @@ socket.on("connect", function(){
   socket.on("tocar_pelicula", tocarPelicula);
   socket.on("avanzar", avanzar);
   socket.on("retroceder", retroceder);
+  socket.on('menu_principal', menuPrincipal);
+
+  
+  socket.on("pantalla_completa", function(){
+    var video = document.getElementById("video_player");
+    if (document.fullscreenElement === video) {
+      document.exitFullscreen();
+    } else {
+      video.requestFullscreen();
+    }
+  });
+
   socket.on('peli', function(peliNum){
     console.log('El servidor envió el número de película:', peliNum);
     selectMovie(peliNum);
     tocarPelicula();
   });
-
-  socket.on('menu_principal', menuPrincipal);
   
 socket.on("subir_volumen", function(volume){
   console.log('Subiendo volumen a:', volume);
@@ -104,6 +114,7 @@ function avanzar(){
   var video = document.getElementById("video_player");
   var salto = 10; // Saltos de 10 segundos
   video.currentTime += salto;
+  console.log("Avanzado");
 }
 
 function retroceder(){
@@ -115,5 +126,6 @@ function retroceder(){
 function menuPrincipal(){
   window.location.href = "./index.html";
 }
+
 
 

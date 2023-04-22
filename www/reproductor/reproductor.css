@@ -108,6 +108,7 @@ body {
     font-size: 20px;
     font-weight: bold;
     text-align: center;
+    color: rgb(32, 32, 32);
   }
 
   /* Estilo de la cabecera */
@@ -117,30 +118,22 @@ body {
     background-color: rgb(32, 32, 32);
     padding: 20px;
     color: #fff;
-  }
-  
-  #texto-titulo {
-    margin: 0;
-    font-size: 36px;
     text-align: center;
-    font-weight: bold;
-    font-family: 'Montserrat', sans-serif;
-    text-shadow: 2px 2px 4px rgba(134, 134, 134, 0.4);
   }
-  
+
+.img_logo{
+    width: 20%;
+  }
+
   /* Estilo de las películas */
   
-  img {
+  .img_peli {
     display: block;
     width: 100%;
     height: auto;
     border-radius: 10px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease-in-out;
-  }
-  
-  h2 {
-    color: rgb(32, 32, 32);
   }
 
   .movie-grid a.selected {

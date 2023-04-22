@@ -7,6 +7,7 @@ socket.on("connect", function(){
   var micro = document.getElementById('micro');
   var initialX, initialY;
   var currentX = -200, currentY = -200;
+  var logo = document.getElementById('div_logo');
   
 
   // Eventos táctiles para dispositivos móviles
@@ -23,24 +24,26 @@ socket.on("connect", function(){
   });
 
   joystick.addEventListener('touchend', function() {
-    if (currentX > 229 && currentY > -380 && currentY < 230){
+    if (currentX > 150){
       console.log("derecha");
       socket.emit('derecha', true);
       socket.emit('avanzar', true);
     }
 
-    if (currentX < -385 && currentY > -380 && currentY < 230){
+    if (currentX < -365 && currentY > -380 && currentY < 230){
       console.log("izquierda");
       socket.emit('izquierda', true);
       socket.emit('retroceder', true);
     }
 
-    if (currentY < -380 && currentX < 229 && currentX > -385){
+    if (currentY < -380 && currentX < 150 && currentX > -365){
       console.log("arriba");
       socket.emit('arriba', true);
+      socket.emit('pantalla_completa', true);
+      console.log("pantalla completa");
     }
 
-    if (currentY > 230 && currentX < 229 && currentX > -385){
+    if (currentY > 230 && currentX < 150 && currentX > -365){
       console.log("abajo");
       socket.emit('abajo', true);
     }
@@ -62,6 +65,11 @@ socket.on("connect", function(){
     console.log("Tocar pelicula");
     socket.emit('tocar_pelicula', true);
   });
+
+  logo.addEventListener('click', function(){
+    console.log("Tocando logo");
+    socket.emit('menu_principal', true);
+  })
 
   /*-----------API Speech---------------*/
 
@@ -174,3 +182,5 @@ window.addEventListener('deviceorientation', function(event) {
 
   }
 });
+
+
