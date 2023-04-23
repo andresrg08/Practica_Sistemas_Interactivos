@@ -73,8 +73,98 @@ height: 7.5%;
   left: 50%;
   transform: translate(-50%, -50%);
   cursor: pointer;
-  
 }
+
+#ayuda{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  display: none;
+  background-color: #fff;
+  overflow-y: auto;
+  opacity: 0.9;
+}
+
+#img_logo_popup_principal{
+  margin-left: 10%;
+}
+
+#img_cierre{
+  width: 10%;
+  float: right;
+}
+
+#logo_titulo{
+  text-align: center;
+}
+
+#titulo_popup{
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 5%;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 8em;
+  color: rgb(49, 129, 175);
+  border: solid 10px rgb(104, 104, 104);
+}
+
+.titulo_seccion_popup{
+  font-size: 5em;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: rgb(85, 85, 85);
+  text-align: center;
+}
+
+.texto_seccion{
+  text-align: center;
+  width: 100%;
+  font-size: 3em;
+  color: rgb(85, 85, 85);
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+.texto_resaltado{
+  color: rgb(49, 129, 175);
+}
+
+#img_bola_popup{
+  width: 40%;
+  margin-left: 30%;
+}
+
+.texto_negrita{
+  font-weight: bold;
+}
+
+.texto_cursiva{
+  font-style: italic;
+}
+
+#img_micro_popup{
+  width: 20%;
+  margin-left: 40%;
+}
+
+#img_logo_popup{
+  width: 30%;
+  margin-left: 35%;
+}
+
+#gracias{
+  color: rgb(49, 129, 175);
+}
+
+.autor{
+  text-align: center;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: #7e7e7e;
+}
+
+
+
 
 @media only screen and (max-width: 600px) {
   #esfera {

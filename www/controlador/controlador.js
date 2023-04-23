@@ -8,7 +8,17 @@ socket.on("connect", function(){
   var initialX, initialY;
   var currentX = -200, currentY = -200;
   var logo = document.getElementById('div_logo');
+  var botonHelp = document.getElementById('img_help');
+  var ayuda = document.getElementById('ayuda');
+  var cierre = document.getElementById('img_cierre');
   
+  botonHelp.addEventListener('click', function() {
+    ayuda.style.display = 'block';
+  });
+
+  cierre.addEventListener('click', function() {
+    ayuda.style.display = 'none';
+  })
 
   // Eventos táctiles para dispositivos móviles
   joystick.addEventListener('touchstart', function(event) {
