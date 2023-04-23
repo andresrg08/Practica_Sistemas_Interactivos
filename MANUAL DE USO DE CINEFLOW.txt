@@ -1,0 +1,8 @@
+MANUAL DE USO DE CINEFLOW
+
+Funcionalidades:
+
+Navegacion por las distintas peliculas ya sea usando el joystick o el micrófono del controlador. Cabe destacar el cambio del fondo de pantalla del controlador cada vez que se actualiza. Para usar el joystick mueva la bola hacia el norte,sur,este u oeste para avanzar una pelicula en esa direccion. Debe moverlo una distancia suficiente(unos 3 cm) para efectuar la acción. Sin embargo si prefiere acceder a una pelicula en concreto de manera más rapida presione el micrófono y pronuncie el titulo que desee. Si pronuncia "RANDOM" verá una pelicula aleatoria.
+
+Una vez este viendo ya su película podra pausarlo y darle al play tocando el joystick. Además podrá subir o bajar el volumen inclinando el controlador sobre el eje gamma, es decir, moviendo hacia la derecha o izquierda en posicion horizontal, como si estuviese apoyado sobre una superficie. Hacia la derecha lo subirá y hacia la izquierda lo bajará.
+También podra avanzar o retroceder 10 segundos en la reproduccion de la pelicula moviendo el joystick hacia la derecha o hacia la izquierda. Y por ultimo podrá volver de nuevo al menu principal para visualizar otra película, presionando el micrófono y pronunciando "GO BACK".
